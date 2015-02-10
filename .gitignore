@@ -15,5 +15,7 @@
 # Ignore other
 *swp
 *~
-.DS_Store
-.secret
+*.DS_Store
+*.secret
+*.csv
+

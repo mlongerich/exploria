@@ -1,0 +1,57 @@
+<%= form_for(@student) do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% @student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :nickname %><br>
+    <%= f.text_field :nickname %>
+  </div>
+  <div class="field">
+    <%= f.label :homeroom %><br>
+    <%= f.text_field :homeroom %>
+  </div>
+  <div class="field">
+    <%= f.label :is_boarding %><br>
+    <%= f.check_box :is_boarding %>
+  </div>
+  <div class="field">
+    <%= f.label :grade %><br>
+    <%= f.text_field :grade %>
+  </div>
+  <div class="field">
+    <%= f.label :birthdate %><br>
+    <%= f.date_select :birthdate %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number %><br>
+    <%= f.text_field :phone_number %>
+  </div>
+  <div class="field">
+    <%= f.label :health_details %><br>
+    <%= f.text_area :health_details %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
