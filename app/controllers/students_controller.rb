@@ -1,10 +1,10 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
-
+  helper_method :sort_column, :sort_direction 
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    @students = Student.order(sort_column + " " + sort_direction)
   end
 
   # GET /students/1
@@ -70,5 +70,13 @@ class StudentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
       params.require(:student).permit(:first_name, :last_name, :nickname, :homeroom, :is_boarding, :grade, :birthdate, :email, :phone_number, :health_details)
+    end
+
+    def sort_column
+      Student.column_names.include?(params[:sort]) ? params[:sort] : "first_name"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end
