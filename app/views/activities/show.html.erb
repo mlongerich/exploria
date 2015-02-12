@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @activity.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @activity.end_date %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @activity.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @activity.end_time %>
+</p>
+
+<p>
+  <strong>Instructor:</strong>
+  <%= @activity.instructor %>
+</p>
+
+<p>
+  <strong>Min students:</strong>
+  <%= @activity.min_students %>
+</p>
+
+<p>
+  <strong>Max students:</strong>
+  <%= @activity.max_students %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @activity.cost %>
+</p>
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>
