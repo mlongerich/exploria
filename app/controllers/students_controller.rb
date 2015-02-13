@@ -4,7 +4,10 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(200)
+    @students = Student.search(params[:search])
+                       .boarder_filter(params[:is_boarding])
+                       .order(sort_column + " " + sort_direction)
+                       .page(params[:page]).per(200)
   end
 
   # GET /students/1

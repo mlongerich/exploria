@@ -19,4 +19,12 @@ class Student < ActiveRecord::Base
       all
     end
   end
+
+  def self.boarder_filter(boarding_status)
+    if boarding_status
+      where('is_boarding = :boarding_status', boarding_status: "#{boarding_status}" )
+    else
+      all
+    end
+  end
 end

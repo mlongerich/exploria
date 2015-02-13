@@ -7,6 +7,9 @@
     <%= hidden_field_tag :direction, params[:direction] %>
     <%= hidden_field_tag :sort, params[:sort] %>
     <%= text_field_tag :search, params[:search] %>
+    <input type="radio">All
+    <%= radio_button_tag :is_boarding, true %>Boarding
+    <%= radio_button_tag :is_boarding, false %>Non-Boarding
     <%= submit_tag "Search", name: nil %>
   </p>
 <% end %>
