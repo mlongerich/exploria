@@ -25,6 +25,8 @@
       <th><%= sortable "is_boarding"  %></th>
       <th><%= sortable "grade"  %></th>
       <th><%= sortable "birthdate"  %></th>
+      <th><%= sortable "birthdate", "Age"  %></th>
+      <th><%= sortable "birthdate", "CMAC Age"  %></th>
       <th><%= sortable "email"  %></th>
       <th><%= sortable "phone_number"  %></th>
       <th><%= sortable "health_details"  %></th>
@@ -42,6 +44,8 @@
         <td><%= student.is_boarding %></td>
         <td><%= student.grade %></td>
         <td><%= student.birthdate %></td>
+        <td><%= age(student.birthdate, Date.today) %></td>
+        <td><%= age(student.birthdate, Date.new(2014,8,1)) %></td>
         <td><%= student.email %></td>
         <td><%= student.phone_number %></td>
         <td><%= student.health_details %></td>
