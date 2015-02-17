@@ -1,30 +1,32 @@
 class Student < ActiveRecord::Base
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+
+  validates :first_name, presence: true, length: {maximum: 20}
+  validates :last_name, presence: true, length: {maximum: 20}
+  validates :nickname, length: {maximum: 20}
   validates :homeroom, presence: true
   validates :grade, presence: true
-  validates :email, presence: true, email: true
+  validates :email, presence: true, email: true, length: {maximum: 40}
+  phony_normalize :phone_number, :default_country_code => 'TH'
+  validates :phone_number, length: {maximum: 30}
+  validates :health_details, length: {maximum: 1000} 
 
   def self.search(search)
     if search
-      where('first_name LIKE :search OR 
-             last_name LIKE :search OR 
-             nickname LIKE :search OR 
-             homeroom LIKE :search OR 
-             grade LIKE :search OR
-             email LIKE :search OR 
-             phone_number LIKE :search OR 
-             health_details LIKE :search', search: "%#{search}%")
+      where('lower(first_name) LIKE lower(:search) OR 
+             lower(last_name) LIKE lower(:search) OR 
+             lower(nickname) LIKE lower(:search) OR 
+             lower(homeroom) LIKE lower(:search) OR 
+             lower(grade) LIKE lower(:search) OR
+             lower(email) LIKE lower(:search) OR 
+             lower(phone_number) LIKE lower(:search) OR 
+             lower(health_details) LIKE lower(:search)', search: "%#{search}%")
     else
       all
     end
   end
 
   def self.boarder_filter(boarding_status)
-    if boarding_status
-      where('is_boarding = :boarding_status', boarding_status: "#{boarding_status}" )
-    else
-      all
-    end
+    %w[true false].include?(boarding_status) ? where('is_boarding = :boarding_status', boarding_status: "#{boarding_status}" ) : all 
   end
+
 end

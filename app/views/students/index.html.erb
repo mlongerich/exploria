@@ -7,9 +7,9 @@
     <%= hidden_field_tag :direction, params[:direction] %>
     <%= hidden_field_tag :sort, params[:sort] %>
     <%= text_field_tag :search, params[:search] %>
-    <input type="radio">All
-    <%= radio_button_tag :is_boarding, true %>Boarding
-    <%= radio_button_tag :is_boarding, false %>Non-Boarding
+    <%= radio_button_tag :is_boarding, '', (true if (params[:is_boarding] != ('true'||'false'))) %>All
+    <%= radio_button_tag :is_boarding, true, (true if (params[:is_boarding] == 'true') ) %>Boarding
+    <%= radio_button_tag :is_boarding, false, (true if (params[:is_boarding] == 'false') ) %>Non-Boarding
     <%= submit_tag "Search", name: nil %>
   </p>
 <% end %>
@@ -25,8 +25,8 @@
       <th><%= sortable "is_boarding"  %></th>
       <th><%= sortable "grade"  %></th>
       <th><%= sortable "birthdate"  %></th>
-      <th><%= sortable "birthdate", "Age"  %></th>
-      <th><%= sortable "birthdate", "CMAC Age"  %></th>
+      <th><%= sortable "birthdate", "Age"  %>
+      <th><%= sortable "birthdate", "CMAC Age"  %>
       <th><%= sortable "email"  %></th>
       <th><%= sortable "phone_number"  %></th>
       <th><%= sortable "health_details"  %></th>
@@ -47,7 +47,7 @@
         <td><%= age(student.birthdate, Date.today) %></td>
         <td><%= age(student.birthdate, Date.new(2014,8,1)) %></td>
         <td><%= student.email %></td>
-        <td><%= student.phone_number %></td>
+        <td><%= student.phone_number.to_s.phony_formatted(:format => :international) if student.phone_number != nil %>
         <td><%= student.health_details %></td>
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>

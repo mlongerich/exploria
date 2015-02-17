@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :homeroom %><br>
-    <%= f.text_field :homeroom %>
+    <%= f.select :homeroom, [ 'EY1T', 'EY2/3M', '1L', '2K', '3J', '4G', '4P', '5IEP', '5J', '5L', '6IEP', '6M', '6S', '7D', '7IEP', '7U', '8C', '8D', '8IEP', '9E', '9IEP', '9M', '10E', '10R', '11G', '11H', '11R', '12D', '12J', '12M' ], :prompt => 'Select Homeroom' %>
   </div>
   <div class="field">
     <%= f.label :is_boarding %><br>
@@ -33,11 +33,11 @@
   </div>
   <div class="field">
     <%= f.label :grade %><br>
-    <%= f.text_field :grade %>
+    <%= f.select :grade, [ 'EY1', 'EY2', 'EY3', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10' '11', '12' ], :prompt => 'Select Grade' %>
   </div>
   <div class="field">
     <%= f.label :birthdate %><br>
-    <%= f.date_select(:birthdate, start_year: 1995) %>
+    <%= f.date_select(:birthdate, start_year: 1995, end_year: 2015 ) %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
@@ -45,7 +45,7 @@
   </div>
   <div class="field">
     <%= f.label :phone_number %><br>
-    <%= f.text_field :phone_number %>
+    <%= f.text_field :phone_number, placeholder: "+66 (0) 53 301 500" %>
   </div>
   <div class="field">
     <%= f.label :health_details %><br>

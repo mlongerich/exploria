@@ -7,7 +7,7 @@ class StudentsController < ApplicationController
     @students = Student.search(params[:search])
                        .boarder_filter(params[:is_boarding])
                        .order(sort_column + " " + sort_direction)
-                       .page(params[:page]).per(200)
+                       .page(params[:page]).per(50)
   end
 
   # GET /students/1
