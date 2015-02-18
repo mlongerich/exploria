@@ -21,27 +21,27 @@
   </div>
   <div class="field">
     <%= f.label :min_students %><br>
-    <%= f.number_field :min_students %>
+    <%= f.number_field :min_students, in: 0..99 %>
   </div>
   <div class="field">
     <%= f.label :max_students %><br>
-    <%= f.number_field :max_students %>
+    <%= f.number_field :max_students, in: 0..99 %>
   </div>
   <div class="field">
     <%= f.label :min_cmac_age %><br>
-    <%= f.number_field :min_cmac_age %>
+    <%= f.number_field :min_cmac_age, in: 2..21 %>
   </div>
   <div class="field">
     <%= f.label :max_cmac_age %><br>
-    <%= f.number_field :max_cmac_age %>
+    <%= f.number_field :max_cmac_age, in: 2..21 %>
   </div>
   <div class="field">
     <%= f.label :min_grade %><br>
-    <%= f.text_field :min_grade %>
+    <%= f.select :min_grade, [ 'EY1', 'EY2', 'EY3', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12' ], prompt: "Choose if not CMAC" %>
   </div>
   <div class="field">
     <%= f.label :max_grade %><br>
-    <%= f.text_field :max_grade %>
+    <%= f.select :max_grade, [ 'EY1', 'EY2', 'EY3', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12' ], prompt: "Choose if not CMAC" %>
   </div>
   <div class="field">
     <%= f.label :cost %><br>

@@ -30,7 +30,7 @@
         <td><%= activity.max_cmac_age %></td>
         <td><%= activity.min_grade %></td>
         <td><%= activity.max_grade %></td>
-        <td><%= activity.cost %></td>
+        <td><%= number_to_currency(activity.cost, unit: "B ") %></td>
         <td><%= activity.description %></td>
         <td><%= link_to 'Show', activity %></td>
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
