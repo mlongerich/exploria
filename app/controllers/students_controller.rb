@@ -1,12 +1,12 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
-  helper_method :sort_column, :sort_direction 
+  helper_method :sort_column_student, :sort_direction 
   # GET /students
   # GET /students.json
   def index
-    @students = Student.search(params[:search])
+    @students = Student.search_student(params[:search])
                        .boarder_filter(params[:is_boarding])
-                       .order(sort_column + " " + sort_direction)
+                       .order(sort_column_student + " " + sort_direction)
                        .page(params[:page]).per(50)
   end
 
@@ -75,12 +75,8 @@ class StudentsController < ApplicationController
       params.require(:student).permit(:first_name, :last_name, :nickname, :homeroom, :is_boarding, :grade, :birthdate, :email, :phone_number, :health_details)
     end
 
-    def sort_column
+    def sort_column_student
       Student.column_names.include?(params[:sort]) ? params[:sort] : "first_name"
-    end
-
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 
 end

@@ -1,12 +1,13 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
-
+  helper_method :sort_column_activity, :sort_direction
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.all
+    @activities = Activity.search_activity(params[:search])
+                          .order(sort_column_activity + " " + sort_direction)
+                          .page(params[:page]).per(50)
   end
-
   # GET /activities/1
   # GET /activities/1.json
   def show
@@ -70,5 +71,9 @@ class ActivitiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
       params.require(:activity).permit(:name, :instructor, :min_students, :max_students, :min_cmac_age, :max_cmac_age, :min_grade, :max_grade, :cost, :description)
+    end
+
+    def sort_column_activity
+      Activity.column_names.include?(params[:sort]) ? params[:sort] : "name"
     end
 end

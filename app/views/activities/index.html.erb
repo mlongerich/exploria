@@ -2,19 +2,29 @@
 
 <h1>Listing Activities</h1>
 
+<%= form_tag activities_path, method: 'get', id: "activity_search" do %>
+  <p>
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+<%= paginate @activities %>
+<br>
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Instructor</th>
-      <th>Min students</th>
-      <th>Max students</th>
-      <th>Min cmac age</th>
-      <th>Max cmac age</th>
-      <th>Min grade</th>
-      <th>Max grade</th>
-      <th>Cost</th>
-      <th>Description</th>
+      <th><%= sortable_activity "name" %></th>
+      <th><%= sortable_activity "instructor" %></th>
+      <th><%= sortable_activity "min_students" %></th>
+      <th><%= sortable_activity "max_students" %></th>
+      <th><%= sortable_activity "min_cmac_age" %></th>
+      <th><%= sortable_activity "max_cmac_age" %></th>
+      <th><%= sortable_activity "min_grade" %></th>
+      <th><%= sortable_activity "max_grade" %></th>
+      <th><%= sortable_activity "cost" %></th>
+      <th><%= sortable_activity "description" %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
