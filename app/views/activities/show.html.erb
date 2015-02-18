@@ -1,23 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Start date:</strong>
-  <%= @activity.start_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @activity.end_date %>
-</p>
-
-<p>
-  <strong>Start time:</strong>
-  <%= @activity.start_time %>
-</p>
-
-<p>
-  <strong>End time:</strong>
-  <%= @activity.end_time %>
+  <strong>Name:</strong>
+  <%= @activity.name %>
 </p>
 
 <p>
@@ -36,8 +21,33 @@
 </p>
 
 <p>
+  <strong>Min cmac age:</strong>
+  <%= @activity.min_cmac_age %>
+</p>
+
+<p>
+  <strong>Max cmac age:</strong>
+  <%= @activity.max_cmac_age %>
+</p>
+
+<p>
+  <strong>Min grade:</strong>
+  <%= @activity.min_grade %>
+</p>
+
+<p>
+  <strong>Max grade:</strong>
+  <%= @activity.max_grade %>
+</p>
+
+<p>
   <strong>Cost:</strong>
   <%= @activity.cost %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @activity.description %>
 </p>
 
 <%= link_to 'Edit', edit_activity_path(@activity) %> |
