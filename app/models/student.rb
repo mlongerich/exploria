@@ -10,7 +10,7 @@ class Student < ActiveRecord::Base
   validates :phone_number, length: {maximum: 30}
   validates :health_details, length: {maximum: 1000} 
 
-  def self.search(search)
+  def self.search_student(search)
     if search
       where('lower(first_name) LIKE lower(:search) OR 
              lower(last_name) LIKE lower(:search) OR 
